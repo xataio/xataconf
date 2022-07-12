@@ -7,6 +7,7 @@ export interface NextauthUser {
   image?: string | null;
   username?: string | null;
   location?: string | null;
+  createdAt?: Date | null;
 }
 
 export type NextauthUserRecord = NextauthUser & XataRecord;
@@ -60,6 +61,7 @@ export type NextauthSessionRecord = NextauthSession & XataRecord;
 
 export interface Ticket {
   user?: NextauthUserRecord | null;
+  createdAt?: Date | null;
 }
 
 export type TicketRecord = Ticket & XataRecord;

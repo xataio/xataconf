@@ -18,7 +18,7 @@ export default NextAuth({
       }
 
       await client.db.tickets.create({
-        user
+        user, createdAt: new Date()
       })
       return true;
     }
