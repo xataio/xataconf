@@ -12,6 +12,8 @@ export const SEO = () => {
 
   return (
     <Head>
+      {/* @todo REMOVE when we actually want SEO */}
+      <meta name="robots" content="noindex,nofollow" />
       {/* COMMON TAGS */}
       <meta charSet="utf-8" />
       <title>{`${name}: ${description}`}</title>
