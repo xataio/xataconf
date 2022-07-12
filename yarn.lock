@@ -284,10 +284,10 @@
   dependencies:
     mini-svg-data-uri "^1.2.3"
 
-"@tejaskumar/xata-next-auth-adapter@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@tejaskumar/xata-next-auth-adapter/-/xata-next-auth-adapter-0.1.0.tgz#c6aa83947b61ee784fb433c3ce868aee0642666b"
-  integrity sha512-tBucyngoV3TEQ0zXSM1Dn5qWmljZP5NzSKXoK21PDOwZ3C7iU8Tiuh5Bm26+gPzd8+XeEfTfPC7T7PkjyftKsQ==
+"@tejaskumar/xata-next-auth-adapter@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@tejaskumar/xata-next-auth-adapter/-/xata-next-auth-adapter-0.1.2.tgz#5eb80ae89fcd15449caacad825f437a8c74a8d8f"
+  integrity sha512-8g3TK5cynF90ZlfqG53G3fnpzSCW+o1m6suI5QjHHL9hVKYdeLizSVZ5RQyvMOXbjpIgZhuxBke4tO/n9Xizig==
 
 "@types/canvas-confetti@^1.4.2":
   version "1.4.2"
