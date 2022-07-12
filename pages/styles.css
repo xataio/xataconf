@@ -13,26 +13,6 @@ body,
   background: black;
 }
 
-@font-face {
-  font-family: "Bossa";
-  src: url("/fonts/Bossa-Medium.woff") format("woff"),
-    url("/fonts/Bossa-Medium.woff2") format("woff2");
-  font-style: normal;
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Bossa";
-  src: url("/fonts/Bossa-Light.woff") format("woff"),
-    url("/fonts/Bossa-Light.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 300;
-  text-rendering: optimizeLegibility;
-  font-display: swap;
-}
-
 @media screen and (min-width: 550px) {
   body .ticket {
     @apply -translate-x-1/2 scale-[0.8];
