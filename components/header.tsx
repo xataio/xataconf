@@ -13,9 +13,7 @@ const MOTION = {
   transition: { delay: 0.1, duration: 0.8 },
 }
 export default function Header() {
-  const { data: session } = useSession() as {
-    data: Session
-  }
+  const session = useSession()
 
   return (
     <motion.header
@@ -35,7 +33,11 @@ export default function Header() {
           </a>
         </Link>
         <div className="flex flex-wrap justify-start gap-3 mt-0">
-          {session?.user?.username ? <TicketButton /> : <RegisterWithGitHub />}
+          {session.status === "authenticated" ? (
+            <TicketButton />
+          ) : (
+            <RegisterWithGitHub />
+          )}
         </div>
       </div>
     </motion.header>

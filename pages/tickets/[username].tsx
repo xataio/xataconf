@@ -20,21 +20,22 @@ import { getAbsoluteURL } from "../../utils/absoluteUrl"
 import { Session, UserType } from "../../utils/types"
 import { motion } from "framer-motion"
 import { DEFAULT_MOTION, name, url } from "../../utils/constants"
+import { NextauthUserRecord, XataClient } from "../../xata"
 
 const UserTicket = ({
   user,
   session,
 }: {
-  user: UserType
+  user: NextauthUserRecord
   session: Session
 }) => {
   const [copied, setCopied] = useState(false)
   const router = useRouter()
   const isTicketHolder =
     session && session.user?.username === router.query.username
-  if (!user || !user.createdAt) return null
-  const [firstName] = user.name.split(" ")
-  const imageUrl = `${url}/api/og?name=${user.name}&username=${user.username}&registrationNumber=${user.registrationNumber}&image=${user.image}`
+
+  const [firstName] = (user.name || "").split(" ")
+  const imageUrl = `${url}/api/og?name=${user.name}&username=${user.username}&image=${user.image}`
 
   const copyToClipboard = async () => {
     // @ts-ignore
@@ -119,7 +120,7 @@ const UserTicket = ({
             <Link href="/">
               <a className="block text-devs-yellow hover:underline">
                 {" "}
-                Read more
+                Learn more
               </a>
             </Link>
           </motion.div>
@@ -135,6 +136,8 @@ const UserTicket = ({
   )
 }
 
+const client = new XataClient()
+
 export const getServerSideProps: GetServerSideProps = async ({
   query,
   req,
@@ -142,9 +145,16 @@ export const getServerSideProps: GetServerSideProps = async ({
   const { username } = query
   const base = getAbsoluteURL(req)
   const session = await getSession({ req })
-  const { user } = await fetch(`${base}/api/user?username=${username}`).then(
-    (rsp) => rsp.json()
-  )
+  const ticket = await client.db.tickets
+    .filter({ "user.username": String(username) })
+    .select(["user.*"])
+    .getFirst()
+  const user = ticket?.user
+
+  if (!user) {
+    return { notFound: true }
+  }
+
   return {
     props: { user, session },
   }

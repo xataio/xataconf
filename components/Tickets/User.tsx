@@ -1,14 +1,17 @@
+import { NextauthUserRecord } from "../../xata"
 import { GitHub } from "../Icons"
 import { AvatarBorder } from "./AvatarBorder"
 
-export const User = ({ user }: { user: any }) => (
+export const User = ({ user }: { user: NextauthUserRecord }) => (
   <>
     <div className="relative h-[74px] sm:h-[64px] w-[74px] sm:w-[64px] m-auto">
-      <img
-        className="sm:w-[64px] sm:h-[64px] w-[74px] h-[74px] rounded-full"
-        src={user.image}
-        alt={user.username}
-      />
+      {user.image && (
+        <img
+          className="sm:w-[64px] sm:h-[64px] w-[74px] h-[74px] rounded-full"
+          src={user.image}
+          alt={user.username || "User's Avatar"}
+        />
+      )}
       <AvatarBorder />
     </div>
     <h2 className="block w-full pt-4 text-lg leading-5 text-center">

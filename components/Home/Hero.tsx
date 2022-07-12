@@ -1,15 +1,10 @@
 import { useSession } from "next-auth/react"
-import { Session } from "../../utils/types"
 import { RegisterWithGitHub } from "../Buttons/RegisterGitHub"
 import { TicketButton } from "../Buttons/TicketButton"
 import { H1 } from "../Typography"
 
-const width = "100%"
-
 export const Hero = () => {
-  const { data: session } = useSession() as {
-    data: Session
-  }
+  const session = useSession()
 
   return (
     <div
@@ -45,7 +40,7 @@ export const Hero = () => {
             tools.
           </H1>
           <div className="flex flex-wrap justify-start gap-3 mt-0">
-            {session?.user?.username ? (
+            {session.status === "authenticated" ? (
               <TicketButton />
             ) : (
               <RegisterWithGitHub />

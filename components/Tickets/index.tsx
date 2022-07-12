@@ -1,14 +1,13 @@
 import { useEffect, useRef } from "react"
-import { UserType } from "../../utils/types"
 import { MobileTicketSVG } from "./MobileTicketBG"
 import { TicketBG } from "./TicketSVG"
 import VanillaTilt from "vanilla-tilt"
-import { User } from "./User"
-import { getNumber } from "./utils"
 import { date } from "../../utils/constants"
 import { Logo } from "../Logo"
+import { NextauthUserRecord } from "../../xata"
+import { User } from "./User"
 
-export const Ticket = (user: UserType) => {
+export const Ticket = (user: NextauthUserRecord) => {
   const wrapper = useRef()
   useEffect(() => {
     if (wrapper.current) {
@@ -31,10 +30,6 @@ export const Ticket = (user: UserType) => {
         <div className="top-8 left-8 absolute w-full sm:w-[52%]">
           <div className="flex items-center justify-between w-full">
             <Logo />
-
-            <span className="hidden underline text-devs-gray100 sm:block">
-              Nº{getNumber(user.registrationNumber)}
-            </span>
           </div>
           <div className="flex flex-col mt-10">
             <span className="block mb-2 text-devs-yellow">
@@ -44,12 +39,7 @@ export const Ticket = (user: UserType) => {
               Online Celebration of Serverless, Databases, and Developer Tools
             </span>
           </div>
-          <span className="block mt-24 underline text-devs-gray100 sm:hidden">
-            {" "}
-            Nº{getNumber(user.registrationNumber)}
-          </span>
         </div>
-
         <div
           className="right-0 w-[35%] flex-col absolute top-12 hidden sm:block"
           style={{ transform: "translateZ(20px)" }}

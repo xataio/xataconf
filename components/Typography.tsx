@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 
 type Props = {
   props: { className?: string; children: React.ReactNode }
-  ref: ForwardedRef<unknown>
+  ref: React.LegacyRef<HTMLSpanElement>
 }
 
 export const H1 = React.forwardRef(
@@ -26,7 +26,6 @@ export const H1 = React.forwardRef(
 export const StatsHeader = React.forwardRef(
   ({ children, className }: Props["props"], ref: Props["ref"]) => (
     <span
-      /* @ts-ignore */
       ref={ref}
       className={classNames(
         "font-bold text-[64px] text-white tracking-tight",
@@ -96,7 +95,7 @@ export const SubHeadlineLarge = React.forwardRef(
 
 export const SubHeadlineXL = React.forwardRef(
   ({ children, className }: Props["props"], ref: Props["ref"]) => (
-    <p
+    <div
       /* @ts-ignore */
       ref={ref}
       className={classNames(
@@ -105,7 +104,7 @@ export const SubHeadlineXL = React.forwardRef(
       )}
     >
       {children}
-    </p>
+    </div>
   )
 )
 
