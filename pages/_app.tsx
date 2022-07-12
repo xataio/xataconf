@@ -24,7 +24,11 @@ export default function App({ Component, pageProps }: AppProps) {
             }}
             Wrapper={ModalWrapper}
           />
-
+          <div className="p-2 text-sm text-center text-devs-yellow">
+            ⚠️ This website and all its content are under development and the
+            information here is likely to change. Nothing is final, not even
+            dates.
+          </div>
           <Component {...pageProps} />
         </MotionConfig>
       </SessionProvider>
