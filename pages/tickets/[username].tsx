@@ -17,10 +17,10 @@ import {
   MotionSubHeadlineLarge,
 } from "../../components/Typography"
 import { getAbsoluteURL } from "../../utils/absoluteUrl"
-import { Session, UserType } from "../../utils/types"
 import { motion } from "framer-motion"
 import { DEFAULT_MOTION, name, url } from "../../utils/constants"
 import { NextauthUserRecord, XataClient } from "../../xata"
+import { Session } from "next-auth"
 
 const UserTicket = ({
   user,
@@ -32,7 +32,10 @@ const UserTicket = ({
   const [copied, setCopied] = useState(false)
   const router = useRouter()
   const isTicketHolder =
-    session && session.user?.username === router.query.username
+    session &&
+    session.user &&
+    (session.user as Session & { username: string }).username ===
+      router.query.username
 
   const [firstName] = (user.name || "").split(" ")
   const imageUrl = `${url}/api/og?name=${user.name}&username=${user.username}&image=${user.image}`

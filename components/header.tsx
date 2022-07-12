@@ -1,6 +1,5 @@
 import Link from "next/link"
 import { useSession } from "next-auth/react"
-import { Session } from "../utils/types"
 import { Logo } from "./Logo"
 import { TicketButton } from "./Buttons/TicketButton"
 import { RegisterWithGitHub } from "./Buttons/RegisterGitHub"

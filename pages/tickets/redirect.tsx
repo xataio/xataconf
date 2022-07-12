@@ -1,13 +1,15 @@
 import { GetServerSideProps } from "next"
+import { Session } from "next-auth"
 import { getSession } from "next-auth/react"
-import { Session } from "../../utils/types"
 
 const RedirectPage = () => null
 
 export default RedirectPage
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const session = (await getSession({ req })) as Session
+  const session = (await getSession({ req })) as Session & {
+    user: { username: string }
+  }
   if (session) {
     return {
       redirect: {
