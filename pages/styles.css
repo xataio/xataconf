@@ -3,13 +3,14 @@
 @tailwind utilities;
 
 body {
-  @apply bg-devs-black text-gray-50 overflow-x-hidden;
+  @apply overflow-x-hidden bg-devs-black text-gray-50;
 }
 
 html,
 body,
 #__next {
   min-height: 100%;
+  background: black;
 }
 
 @font-face {
@@ -41,7 +42,7 @@ body,
 }
 
 body .ticket {
-  @apply -translate-x-1/2 scale-100;
+  @apply scale-100 -translate-x-1/2;
 }
 
 input::-webkit-outer-spin-button,
@@ -96,42 +97,47 @@ input[type="number"] {
   }
 }
 p::selection {
-  color: #FFE87A;
-  background: #2374BF;
+  color: #ffe87a;
+  background: #2374bf;
 }
 
 .tooltip {
-  @apply invisible absolute;
+  @apply absolute invisible;
 }
 
 .has-tooltip:hover .tooltip {
-  @apply visible z-50
+  @apply z-50 visible;
 }
 .emoji-mart-title-label {
   @apply hidden;
 }
 
 .emoji-clicked {
-  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;
 }
 
 @keyframes shake {
-  10%, 90% {
+  10%,
+  90% {
     transform: translate3d(-1px, 0, 0);
   }
-  
-  20%, 80% {
+
+  20%,
+  80% {
     transform: translate3d(2px, 0, 0);
   }
 
-  30%, 50%, 70% {
+  30%,
+  50%,
+  70% {
     transform: translate3d(-4px, 0, 0);
   }
 
-  40%, 60% {
+  40%,
+  60% {
     transform: translate3d(4px, 0, 0);
   }
 }
