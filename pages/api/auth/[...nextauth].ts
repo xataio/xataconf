@@ -9,19 +9,17 @@ export default NextAuth({
   adapter: XataAdapter(client),
   callbacks: {
     session: async ({ session, user }) => {
-      return { ...session, user: { ...session.user, ...user } }
-    },
-    signIn: async ({ user }) => {
+      const payload = { ...session, user: { ...session.user, ...user } }
       const hasTicket = await client.db.tickets.filter({ 'user.id': user.id }).getFirst();
       if (Boolean(hasTicket)) {
-        return true;
+        return payload;
       }
 
       await client.db.tickets.create({
         user, createdAt: new Date()
       })
-      return true;
-    }
+      return payload;
+    },
   },
   providers: [
     GitHubProvider({
