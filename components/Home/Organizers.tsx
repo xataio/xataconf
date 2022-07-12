@@ -42,15 +42,17 @@ export const Organizers: FC<Props> = ({ organizers }) => (
           key={organizer.name}
           className="bg-white bg-opacity-5 rounded-md h-[180px] flex items-center justify-center flex-col relative w-[290px]"
         >
-          <a
-            href={`https://twitter.com/${organizer.twitter}`}
-            target="_blank"
-            rel="noreferrer"
-            className="absolute top-6 right-6"
-            aria-label={`${organizer.name} on Twitter`}
-          >
-            <TwitterSmall />
-          </a>
+          {organizer.twitter && (
+            <a
+              href={organizer.twitter}
+              target="_blank"
+              rel="noreferrer"
+              className="absolute top-6 right-6"
+              aria-label={`${organizer.name} on Twitter`}
+            >
+              <TwitterSmall />
+            </a>
+          )}
           <img
             src={
               organizer.image ||

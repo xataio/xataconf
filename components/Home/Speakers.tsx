@@ -1,12 +1,6 @@
 import { motion } from "framer-motion"
-import { shuffle } from "lodash-es"
-import Image from "next/image"
-import { FC, useEffect, useState } from "react"
+import { FC } from "react"
 import { DEFAULT_MOTION } from "../../utils/constants"
-import {
-  backendSpeakers as backendSpeakersOriginal,
-  frontendSpeakers as frontendSpeakersOriginal,
-} from "../../utils/speakers"
 import { SpeakerRecord } from "../../xata"
 import { SecondaryButton } from "../Buttons/Secondary"
 import { TwitterSmall } from "../Icons"
@@ -95,6 +89,8 @@ const Speaker = ({ speaker, i }: { speaker: SpeakerRecord; i: number }) => {
             <span className="font-bossa">{speaker.name}</span>
             {speaker.twitter && (
               <a
+                target="_blank"
+                rel="noopener noreferrer"
                 className="pt-1 text-devs-blue"
                 href={speaker.twitter}
                 aria-label={`${speaker.name} on Twitter`}
