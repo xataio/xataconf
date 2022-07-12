@@ -6,16 +6,16 @@ import { DEFAULT_MOTION } from "../../utils/constants"
 
 const info = [
   {
-    top: 9,
-    bottom: "Front-End Speakers",
+    top: 6,
+    bottom: "Speakers",
   },
   {
-    top: "102K",
-    bottom: "Donated",
+    top: "Free",
+    bottom: "Tickets",
   },
   {
-    top: 8,
-    bottom: "Back-End Speakers",
+    top: "Online",
+    bottom: "Location",
   },
 ]
 
@@ -40,7 +40,11 @@ export const Info = () => (
             <StatsHeader>{item.top}</StatsHeader>
             <Label
               className={classNames(
-                index === 1 ? "!text-devs-yellow" : "!text-devs-blue"
+                index === 1
+                  ? "!text-devs-yellow"
+                  : index === 2
+                  ? "!text-devs-cyan"
+                  : "text-devs-red600"
               )}
             >
               {item.bottom}

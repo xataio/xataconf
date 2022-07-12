@@ -10,9 +10,10 @@ module.exports = {
       colors: {
         devs: {
           black: "#141414",
-          yellow: "#E7CD54",
-          yellow100: "#FFE87B",
-          blue: "#2797FA",
+          yellow: "#febb00",
+          blue: "#057aff",
+          cyan: "#0ad6a1",
+          red600: "#ff0075",
           gray500: "#1C1C1C",
           gray400: "#1B1A1A",
           gray300: "#232121",
@@ -23,8 +24,7 @@ module.exports = {
       },
 
       fontFamily: {
-        sans: ["Inter var", ...defaultTheme.fontFamily.sans],
-        bossa: "Bossa",
+        sans: ["Inter", "Inter var", ...defaultTheme.fontFamily.sans],
       },
       boxShadow: {
         yellow: "0 0 32px rgb(255, 213, 0, 0.3)",

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 import { DEFAULT_MOTION } from "../../utils/constants"
-import { ByRemoteIcon, TwitterSmall } from "../Icons"
+import { TwitterSmall } from "../Icons"
 import { Label, MotionH2, MotionSubHeadlineLarge } from "../Typography"
 
 import sara from "../../public/organizers/sara.jpeg"
@@ -10,6 +10,8 @@ import marcelo from "../../public/organizers/marcelo.jpeg"
 import cassidy from "../../public/speakers/cassidy.jpeg"
 import tobi from "../../public/speakers/tobi.jpg"
 import Image from "next/image"
+import { Xatafly } from "../Xatafly"
+
 const organizers = [
   {
     name: "Sara Vieira",
@@ -48,21 +50,24 @@ const motionStagger = (index: number) => ({
 })
 
 export const Organizers = () => (
-  <div className="flex gap-4 min-h-screen flex-col pt-[160px]">
+  <div className="flex px-4 gap-4 min-h-screen flex-col pt-[160px]">
     <div className="text-center">
       <MotionH2
         {...DEFAULT_MOTION()}
-        className="flex items-end justify-center gap-2"
+        className="flex items-center justify-center gap-4"
       >
-        Organized <ByRemoteIcon className="relative bottom-1" />
+        Organized by <Xatafly size={48} />
       </MotionH2>
     </div>
     <MotionSubHeadlineLarge
       {...DEFAULT_MOTION()}
       className="mt-5 mx-auto block text-center !text-devs-gray100 max-w-[560px]"
     >
-      This charity event was put together by the lovely people at Remote who
-      made this possible.
+      This event was put together by the talented{" "}
+      <span className="text-white">
+        <strong>Xata Developer Relations</strong>
+      </span>{" "}
+      team.
     </MotionSubHeadlineLarge>
     <ul className="flex gap-8 flex-wrap items-center justify-center mt-[120px] mb-[160px]">
       {organizers.map((organizer, i) => (

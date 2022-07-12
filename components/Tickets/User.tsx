@@ -11,10 +11,10 @@ export const User = ({ user }: { user: any }) => (
       />
       <AvatarBorder />
     </div>
-    <h2 className="font-bossa text-lg pt-4 block w-full text-center leading-5">
+    <h2 className="block w-full pt-4 text-lg leading-5 text-center">
       {user.name}
     </h2>
-    <div className="flex items-center gap-2 text-xs justify-center mt-2">
+    <div className="flex items-center justify-center gap-2 mt-2">
       <GitHub width={14} height={14} className="text-slate-500" />
       <a href={`https://github.com/${user.username}`}>
         <h6 className="text-slate-500">{user.username}</h6>

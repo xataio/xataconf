@@ -15,13 +15,13 @@ export const QuestionForm = (session: Session) => {
           value={question}
           placeholder="Ask anything"
           onChange={(e) => setQuestion(e.target.value)}
-          className="w-full p-3 bg-transparent border-0 outline-none focus:outline-none placeholder:font-light font-light"
+          className="w-full p-3 font-light bg-transparent border-0 outline-none focus:outline-none placeholder:font-light"
           maxLength={150}
         />
         {error && (
-          <span className="pl-3 text-red-600 text-xs block mt-2">{error}</span>
+          <span className="block pl-3 mt-2 text-devs-red600">{error}</span>
         )}
-        <div className="flex justify-between items-center w-full">
+        <div className="flex items-center justify-between w-full">
           <div className="flex">
             {session?.user?.image && (
               <Image
@@ -33,22 +33,20 @@ export const QuestionForm = (session: Session) => {
               />
             )}
             <div className="ml-3">
-              <p className="text-xs text-left">{session?.user?.name}</p>
-              <p className="text-[11px] text-left text-devs-gray100">
+              <p className="text-left">{session?.user?.name}</p>
+              <p className="text-left text-devs-gray100">
                 @{session?.user?.username}
               </p>
             </div>
           </div>
-          <span className="text-xs text-devs-gray100">
-            {question.length} / 150
-          </span>
+          <span className="text-devs-gray100">{question.length} / 150</span>
         </div>
       </div>
       <div className="flex justify-between mt-10">
         <SecondaryButton href="/">Cancel</SecondaryButton>
         {question && (
           <button
-            className="bg-devs-yellow text-black px-6 py-3 rounded-md font-semibold text-xs gap-2 items-center inline-flex h-10"
+            className="inline-flex items-center h-10 gap-2 px-6 py-3 font-semibold text-black rounded-md bg-devs-yellow"
             type="submit"
           >
             Send my question

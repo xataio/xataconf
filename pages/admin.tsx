@@ -119,8 +119,8 @@ const Question = ({
           />
         )}
         <div>
-          <p className="text-xs text-left">{question?.User?.name}</p>
-          <p className="text-[11px] text-left text-devs-gray100">
+          <p className="text-left">{question?.User?.name}</p>
+          <p className="text-left text-devs-gray100">
             @{question?.User?.username}
           </p>
         </div>

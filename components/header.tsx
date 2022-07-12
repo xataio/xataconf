@@ -5,8 +5,6 @@ import { Logo } from "./Logo"
 import { TicketButton } from "./Buttons/TicketButton"
 import { RegisterWithGitHub } from "./Buttons/RegisterGitHub"
 import { motion } from "framer-motion"
-import { ByRemoteIcon } from "./Icons"
-import { DonateButton } from "./Buttons/Donate"
 
 const MOTION = {
   initial: { opacity: 0 },
@@ -20,23 +18,23 @@ export default function Header() {
   }
 
   return (
-    <motion.header {...MOTION} className="pt-8 sticky top-0 z-20 ">
+    <motion.header
+      {...MOTION}
+      className="sticky top-0 z-20 p-4 bg-black bg-opacity-50 backdrop-blur-2xl"
+    >
       <noscript>
         <style>{`.nojs-show { opacity: 1; top: 0; }`}</style>
       </noscript>
-      <div className="w-[80rem] max-w-[80%] mx-auto flex flex-row items-center justify-between  ">
+      <div className="flex flex-row items-center justify-between mx-auto ">
         <Link href="/">
           <a
             className="flex gap-2 items-end justify-center sm:justify-start sm:w-auto w-[120px]"
             aria-label="Go back home"
           >
             <Logo />
-            <div className="relative top-1 hidden sm:block">
-              <ByRemoteIcon />
-            </div>
           </a>
         </Link>
-        <div className="flex gap-3 flex-wrap mt-0 justify-start">
+        <div className="flex flex-wrap justify-start gap-3 mt-0">
           {session?.user?.username ? <TicketButton /> : <RegisterWithGitHub />}
         </div>
       </div>

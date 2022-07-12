@@ -7,7 +7,7 @@ export default function SignInModal() {
       <div className="mt-3 text-center sm:mt-5">
         <Dialog.Title
           as="h3"
-          className=" font-bossa text-[40px] max-w-xs m-auto flex flex-col items-center mb-10"
+          className=" text-[40px] max-w-xs m-auto flex flex-col items-center mb-10"
         >
           Sign in with GitHub
         </Dialog.Title>

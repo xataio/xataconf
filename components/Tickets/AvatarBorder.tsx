@@ -23,8 +23,14 @@ export const AvatarBorder = () => (
         gradientUnits="userSpaceOnUse"
       >
         <stop stopColor="#2696FA" />
-        <stop offset="0.502604" stopColor="#2696FA" />
-        <stop offset="0.502704" stopColor="#E7CD54" />
+        <stop offset="0" stopColor="#ff0075" />
+        <stop offset="0.25" stopColor="#ff0075" />
+        <stop offset="0.25" stopColor="#057aff" />
+        <stop offset="0.50" stopColor="#057aff" />
+        <stop offset="0.50" stopColor="#0ad6a1" />
+        <stop offset="0.75" stopColor="#0ad6a1" />
+        <stop offset="0.75" stopColor="#febb00" />
+        <stop offset="1" stopColor="#febb00" />
       </linearGradient>
     </defs>
   </svg>

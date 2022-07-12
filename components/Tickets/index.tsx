@@ -1,10 +1,12 @@
 import { useEffect, useRef } from "react"
 import { UserType } from "../../utils/types"
 import { MobileTicketSVG } from "./MobileTicketBG"
-import { TicketBG, TicketLogoSVG } from "./TicketSVG"
+import { TicketBG } from "./TicketSVG"
 import VanillaTilt from "vanilla-tilt"
 import { User } from "./User"
 import { getNumber } from "./utils"
+import { date } from "../../utils/constants"
+import { Logo } from "../Logo"
 
 export const Ticket = (user: UserType) => {
   const wrapper = useRef()
@@ -23,26 +25,26 @@ export const Ticket = (user: UserType) => {
       }}
     >
       <div
-        className="transform absolute ticket" // @ts-ignore
+        className="absolute transform ticket" // @ts-ignore
         ref={wrapper}
       >
         <div className="top-8 left-8 absolute w-full sm:w-[52%]">
-          <div className="flex justify-between w-full items-center">
-            <TicketLogoSVG />
+          <div className="flex items-center justify-between w-full">
+            <Logo />
 
-            <span className="text-devs-gray100 underline hidden sm:block">
+            <span className="hidden underline text-devs-gray100 sm:block">
               Nº{getNumber(user.registrationNumber)}
             </span>
           </div>
-          <div className="mt-10 flex flex-col">
-            <span className="text-devs-yellow text-xs mb-2 block">
-              April 25 - 26, 2022
+          <div className="flex flex-col mt-10">
+            <span className="block mb-2 text-devs-yellow">
+              {Intl.DateTimeFormat("en-US", { dateStyle: "long" }).format(date)}
             </span>
-            <span className="text-xl font-bossa">
-              Online Front-end &<br /> Back-end Conference
+            <span className="text-lg">
+              Online Celebration of Serverless, Databases, and Developer Tools
             </span>
           </div>
-          <span className="text-devs-gray100 underline block sm:hidden mt-24">
+          <span className="block mt-24 underline text-devs-gray100 sm:hidden">
             {" "}
             Nº{getNumber(user.registrationNumber)}
           </span>
@@ -57,7 +59,7 @@ export const Ticket = (user: UserType) => {
 
         <TicketBG />
         <MobileTicketSVG />
-        <div className="bottom-12 left-1/2 -translate-x-1/2 absolute sm:hidden block w-full flex-col items-center justify-center">
+        <div className="absolute flex-col items-center justify-center block w-full -translate-x-1/2 bottom-12 left-1/2 sm:hidden">
           <User user={user} />
         </div>
       </div>

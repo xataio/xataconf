@@ -3,7 +3,7 @@ import { Body, H2, H3 } from "../components/Typography"
 
 const CodeOfConduct = () => (
   <Layout>
-    <section className="text-devs-gray100 max-w-xl m-auto mt-[120px] ">
+    <section className="text-devs-gray100 max-w-xl m-auto mt-[120px] mb-8">
       <H2>Code of Conduct</H2>
       <Body className="m-0 p-0 mt-10 !text-devs-gray100">
         All <span className="text-white">attendees</span>,{" "}

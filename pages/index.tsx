@@ -14,7 +14,6 @@ export default function IndexPage({}: Props) {
       <Info />
       <Speakers />
       <Organizers />
-      <Sponsors />
     </Layout>
   )
 }

@@ -19,13 +19,13 @@ import {
 
 // generated with https://gcal.dotenv.dev/
 
-const Header = ({ i }: { i: number }) => (
+const Header = () => (
   <motion.div
     {...DEFAULT_MOTION({})}
     className="mt-[160px] mb-20 sm:flex items-end justify-between"
   >
-    <SubHeadlineXL className="block !text-devs-gray100 min-w-[188px] mr-[48px]">
-      <H3 className="text-white block">Day {i}</H3> Speakers & Talks
+    <SubHeadlineXL className="block !text-devs-gray100 min-w-[188px] mr-[48px] shrink-0">
+      <H3 className="block text-white">Speakers &amp; Talks</H3>
     </SubHeadlineXL>
     <div className="h-[1px] w-full bg-white mb-4 sm:block hidden" />
   </motion.div>
@@ -43,35 +43,27 @@ export const Speakers = () => {
   useEffect(() => setFrontendSpeakers(shuffle(frontendSpeakersOriginal)), [])
 
   return (
-    <div className="flex  gap-4 min-h-screen flex-col pt-[160px]">
+    <div className="flex max-w-screen-lg px-4 mx-auto gap-4 min-h-screen flex-col pt-[160px]">
       <div className="text-center">
-        <MotionH2 {...DEFAULT_MOTION()}>Speaker Panel</MotionH2>
+        <MotionH2 {...DEFAULT_MOTION()}>Speakers</MotionH2>
       </div>
       <MotionSubHeadlineLarge
         {...DEFAULT_MOTION()}
-        className="mt-5 m-auto block text-center !text-devs-gray100 max-w-[560px]"
+        className="mt-5 m-auto block text-center !text-devs-gray100"
       >
-        Spend <span className="text-white">2 days</span> learning from{" "}
-        <span className="text-white">engineering leaders</span> around the
-        globe. Topics will include{" "}
+        Spend the day learning from{" "}
         <span className="text-white">
-          career growth, team leadership, tech’s ability
+          <strong>engineering leaders</strong>
         </span>{" "}
-        to create a more equitable world, and more.
+        around the globe. Topics include{" "}
+        <span className="text-white">
+          <strong>serverless, databases, and developer tools</strong>
+        </span>{" "}
+        to create powerful serverless software for global impact.
       </MotionSubHeadlineLarge>
-      <Header i={1} />
+      <Header />
       <ul className="mb-28">
         {frontendSpeakers.map((speaker, index) => (
-          <Speaker
-            key={`${speaker.name}-${speaker.pic}`}
-            i={index}
-            speaker={speaker}
-          />
-        ))}
-      </ul>
-      <Header i={2} />
-      <ul className="mb-28">
-        {backendSpeakers.map((speaker, index) => (
           <Speaker
             key={`${speaker.name}-${speaker.pic}`}
             i={index}
@@ -91,7 +83,7 @@ const Speaker = ({ speaker, i }: { speaker: any; i: number }) => {
       {...motionStagger(i)}
       className="sm:flex flex-col sm:flex-row justify-between items-center mb-6 pb-6 border-b-[1px] border-opacity-20 border-dashed border-white"
     >
-      <div className="flex items-center">
+      <div className="flex items-center w-full">
         <button
           disabled={!speaker.turtle}
           className="relative min-w-[64px] w-16  mr-6"
@@ -108,11 +100,11 @@ const Speaker = ({ speaker, i }: { speaker: any; i: number }) => {
         </button>
 
         <div>
-          <div className="flex gap-3 items-center">
+          <div className="flex items-center gap-3">
             <span className="font-bossa">{speaker.name}</span>
 
             <a
-              className="text-devs-blue pt-1"
+              className="pt-1 text-devs-blue"
               href={`https://twitter.com/${speaker.twitter}`}
               aria-label={`${speaker.name} on Twitter`}
             >
@@ -125,8 +117,13 @@ const Speaker = ({ speaker, i }: { speaker: any; i: number }) => {
           </TalkName>
         </div>
       </div>
-      <div className="flex sm:max-w-[70%] mt-4 sm:mt-0 gap-4 items-center">
-        <SecondaryButton href={speaker.yt} target="_blank" rel="noreferrer">
+      <div className="flex sm:max-w-[70%] mt-4 sm:mt-0 gap-4 w-full items-center">
+        <SecondaryButton
+          className="justify-center w-full md:w-fit md:ml-auto"
+          href={speaker.yt}
+          target="_blank"
+          rel="noreferrer"
+        >
           View talk
         </SecondaryButton>
       </div>

@@ -14,7 +14,7 @@ export const H1 = React.forwardRef(
       /* @ts-ignore */
       ref={ref}
       className={classNames(
-        "font-bold font-bossa text-[80px] text-white tracking-tight",
+        "font-bold text-2xl sm:text-4xl md:text-6xl lg:text-7xl text-white md:tracking-tight",
         className
       )}
     >
@@ -29,7 +29,7 @@ export const StatsHeader = React.forwardRef(
       /* @ts-ignore */
       ref={ref}
       className={classNames(
-        "font-bold font-bossa text-[64px] text-white tracking-tight",
+        "font-bold text-[64px] text-white tracking-tight",
         className
       )}
     >
@@ -44,7 +44,7 @@ export const H2 = React.forwardRef(
       /* @ts-ignore */
       ref={ref}
       className={classNames(
-        "font-bold font-bossa text-[40px] text-white leading-[1.4]",
+        "font-bold text-[40px] text-white leading-[1.4]",
         className
       )}
     >
@@ -59,7 +59,7 @@ export const H3 = React.forwardRef(
       /* @ts-ignore */
       ref={ref}
       className={classNames(
-        "text-white font-[500] leading-[1.4] font-bossa text-2xl",
+        "text-white font-[500] leading-[1.4] text-2xl",
         className
       )}
     >
@@ -73,10 +73,7 @@ export const TalkName = React.forwardRef(
     <span
       /* @ts-ignore */
       ref={ref}
-      className={classNames(
-        "font-bossa text-white font-[500] text-xs",
-        className
-      )}
+      className={classNames("text-white font-[500]", className)}
     >
       {children}
     </span>
@@ -129,7 +126,7 @@ export const Label = React.forwardRef(
     <p
       /* @ts-ignore */
       ref={ref}
-      className={classNames("text-white text-[13px] leading-[1.5]", className)}
+      className={classNames("text-white leading-[1.5]", className)}
     >
       {children}
     </p>
