@@ -12,6 +12,7 @@ export const SEO = () => {
 
   return (
     <Head>
+      <meta name="theme-color" content="#000000" />
       {/* @todo REMOVE when we actually want SEO */}
       <meta name="robots" content="noindex,nofollow" />
       {/* COMMON TAGS */}
