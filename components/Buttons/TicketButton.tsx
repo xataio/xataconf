@@ -15,7 +15,7 @@ export const TicketButton = () => {
       }`}
     >
       <TicketIcon />
-      <span className="hidden sm:inline">My Ticket</span>{" "}
+      <span>My Ticket</span>{" "}
     </SecondaryButton>
   ) : (
     <RegisterWithGitHub />

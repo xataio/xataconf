@@ -17,6 +17,6 @@ export const RegisterWithGitHub = ({
     )}
   >
     <GitHub width="20" />
-    <span className="hidden sm:inline">Register with GitHub</span>
+    <span>Register with GitHub</span>
   </button>
 )
