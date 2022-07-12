@@ -1,6 +1,6 @@
+import { Session } from "next-auth"
 import { useSession } from "next-auth/react"
 
-import { Session } from "../../utils/types"
 import { TicketIcon } from "../Icons"
 import { RegisterWithGitHub } from "./RegisterGitHub"
 import { SecondaryButton } from "./Secondary"
