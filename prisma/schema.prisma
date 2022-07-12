@@ -49,23 +49,12 @@ model User {
     username           String     @unique
     location           String?
     createdAt          DateTime   @default(now())
-    Donations          Donation[]
     Questions          Question[]
-
 }
 
 enum Role {
     ATENDEE
     ADMIN
-}
-
-model Donation {
-    id        String   @id @default(cuid())
-    amount    Int
-    userId    String?
-    User      User?    @relation(fields: [userId], references: [id])
-    email     String?
-    createdAt DateTime @default(now())
 }
 
 model Question {
@@ -84,16 +73,4 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
-}
-
-model Reactions {
-    id          String
-    name        String
-    short_names String[]
-    colons      String   @id @unique
-    emoticons   String[]
-    unified     String
-    skin        Int?
-    native      String
-    uses        Int
 }

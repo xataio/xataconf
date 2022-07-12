@@ -63,7 +63,7 @@ export const allNgos = [
     name: "Coalition To Support BlackPeople In Ukraine",
     link: "https://www.gofundme.com/f/support-vulnerable-black-people-in-ukraine",
     Text: () => (
-      <p className="opacity-40 transition hover:opacity-100 font-bossa text-center text-sm italic">
+      <p className="text-sm italic text-center transition opacity-40 hover:opacity-100 font-bossa">
         CoalitionToSupport <br />
         BlackPeopleInUkraine
       </p>
@@ -77,7 +77,7 @@ const motionStagger = (index: number) => ({
 
 export const NGOS = () => (
   <>
-    <ul className="flex md:grid grid-cols-4 flex-wrap items-center justify-center gap-14 mb-10 pt-10">
+    <ul className="flex flex-wrap items-center justify-center grid-cols-4 pt-10 mb-10 md:grid gap-14">
       {allNgos.map(({ Text, ...ngo }, i) => (
         <motion.li
           key={ngo.link}
@@ -87,7 +87,7 @@ export const NGOS = () => (
           <a href={ngo.link} target="_blank" rel="noreferrer">
             {ngo.image ? (
               <Image
-                className="opacity-40 transition hover:opacity-100"
+                className="transition opacity-40 hover:opacity-100"
                 src={ngo.image}
                 alt={ngo.name}
                 width={ngo.width}

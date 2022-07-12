@@ -19,7 +19,7 @@ import {
 import { getAbsoluteURL } from "../../utils/absoluteUrl"
 import { Session, UserType } from "../../utils/types"
 import { motion } from "framer-motion"
-import { DEFAULT_MOTION } from "../../utils/constants"
+import { DEFAULT_MOTION, name, url } from "../../utils/constants"
 
 const UserTicket = ({
   user,
@@ -34,7 +34,7 @@ const UserTicket = ({
     session && session.user?.username === router.query.username
   if (!user || !user.createdAt) return null
   const [firstName] = user.name.split(" ")
-  const imageUrl = `https://www.devsforukraine.io/api/og?name=${user.name}&username=${user.username}&registrationNumber=${user.registrationNumber}&image=${user.image}`
+  const imageUrl = `${url}/api/og?name=${user.name}&username=${user.username}&registrationNumber=${user.registrationNumber}&image=${user.image}`
 
   const copyToClipboard = async () => {
     // @ts-ignore
@@ -45,8 +45,9 @@ const UserTicket = ({
     }, 2000)
   }
 
-  const tweetCopy =
-    "I%27m%20going%20to%20Devs%20For%20Ukraine,%20a%20free%20conference%20to%20benefit%20Ukraine%20with%2017%20awesome%20speakers!%20Will%20I%20see%20you%20there?"
+  const tweetCopy = encodeURIComponent(
+    `I'm attending XataConf to join the celebration of databases, serverless, and developer tools! Get your ticket at ${url}!`
+  )
 
   return (
     <Layout noFooter withBG>
@@ -61,7 +62,7 @@ const UserTicket = ({
         <meta itemProp="image" content={imageUrl}></meta>
       </Head>
 
-      <div className="flex flex-col items-center gap-8 mt-20 h-full relative z-1 min-h-screen sm:min-h-0">
+      <div className="relative flex flex-col items-center h-full min-h-screen gap-8 mt-20 z-1 sm:min-h-0">
         <div
           className={classNames(
             " max-w-full",
@@ -71,7 +72,7 @@ const UserTicket = ({
           <MotionH2 {...DEFAULT_MOTION()} className="text-center">
             {isTicketHolder
               ? "Congratulations, you are registered!"
-              : `${user.username} is attending Devs For Ukraine!`}
+              : `${user.username} is attending ${name}!`}
           </MotionH2>
 
           <MotionSubHeadlineLarge
@@ -79,19 +80,17 @@ const UserTicket = ({
             className="pt-4 !text-devs-gray100 text-center"
           >
             {isTicketHolder
-              ? ` We are delighted that you will be joining us for the
-              Devs For Ukraine event.`
-              : `Devs For Ukraine is a free, online conference with the goal to raise
-              funds and provide support to Ukraine. `}
+              ? ` We are delighted that you will be joining us for ${name}.`
+              : `${name} is a free, online conference with the goal to celebrate databases, serverlesss, and developer tools. `}
           </MotionSubHeadlineLarge>
         </div>
         {isTicketHolder ? (
           <motion.div
             {...DEFAULT_MOTION({ delay: 0.2 })}
-            className="flex gap-3 mb-12 items-start"
+            className="flex items-start gap-3 mb-12"
           >
             <SecondaryButton
-              href={`https://twitter.com/intent/tweet?text=${tweetCopy}&url=https://devsforukraine.io/tickets/${user.username}`}
+              href={`https://twitter.com/intent/tweet?text=${tweetCopy}&url=${url}/tickets/${user.username}`}
               outsideWebsite
               target="_blank"
               rel="noreferrer"
@@ -114,11 +113,11 @@ const UserTicket = ({
         ) : (
           <motion.div
             {...DEFAULT_MOTION({ delay: 0.2 })}
-            className="flex gap-3 mb-12 items-center"
+            className="flex items-center gap-3 mb-12"
           >
             <RegisterWithGitHub />
             <Link href="/">
-              <a className="text-devs-yellow block hover:underline">
+              <a className="block text-devs-yellow hover:underline">
                 {" "}
                 Read more
               </a>

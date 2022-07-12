@@ -1,7 +1,9 @@
-# Devs For Ukraine 🇺🇦
+# XataConf
 
-Devs For Ukraine was a free, online engineering conference with the goal to raise funds and provide support to Ukraine.
+This project contains the XataConf website code and registration system, built on Xata as the data store. It is a Next.js app on the frontend and server side.
 
-The event raised over $100k for some incredible organizations!
+## Contributing
 
-[See more information on the website](https://www.devsforukraine.io/), and [view the talks here](https://www.youtube.com/playlist?list=PLxhAYc-E3agF5KgXBnxNstUq9FZoXNETE).
+To contribute to this project, fork it and open a Pull Request. We'll be nice, promise.
+
+Made with ❤️.

@@ -59,7 +59,7 @@ export function getHtml(parsedReq: any) {
   <body>
     <div class="relative" style="transform: scale(2.5)">
     <h1 style="font-size:20px; font-weight: bold;font-family: Bossa">
-    ${parsedReq.username} is attending Devs For Ukraine!
+    ${parsedReq.username} is attending XataConf!
   </h1>
       <div style="margin-top: 40px">
       ${htmlString}

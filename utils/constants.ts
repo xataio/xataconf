@@ -1,17 +1,10 @@
 import confetti from "canvas-confetti"
 
-export const PAYMENT_STEPS = {
-    CANCEL: "CANCEL",
-    FINAL: "FINAL",
-}
+export const url = "https://conf.xata.io"
+export const name = "XataConf"
 
 export const HEADER_HEIGHT = 112
 
-export const USDFormatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 0,
-})
 
 export const DEFAULT_MOTION = (transition: any = { delay: .1 }) => ({
     initial: { y: 32, opacity: 0 },

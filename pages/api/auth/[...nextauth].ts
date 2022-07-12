@@ -41,7 +41,6 @@ export default NextAuth({
         if (!session?.user) return session
         session.user.registrationNumber = idUser?.registrationNumber
         session.user.username = idUser?.username
-        session.user.donationAmount = idUser?.donationAmount
       }
       return session
     },

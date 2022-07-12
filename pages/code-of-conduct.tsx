@@ -9,8 +9,7 @@ const CodeOfConduct = () => (
         All <span className="text-white">attendees</span>,{" "}
         <span className="text-white">speakers</span>,{" "}
         <span className="text-white">sponsors</span> and{" "}
-        <span className="text-white">volunteers</span> at Devs For Ukraine
-        conference{" "}
+        <span className="text-white">volunteers</span> at XataConf{" "}
         <span className="text-white underline">
           are required to agree with the following code of conduct.
         </span>
@@ -21,17 +20,17 @@ const CodeOfConduct = () => (
         <br />
         <br />
         <a
-          className="text-devs-yellow block"
+          className="block text-devs-yellow"
           href="mailto:sara.vieira@remote.com"
         >
           Report an Issue.
         </a>
       </Body>
       <H3 className="mt-20 mb-6">The Quick Version</H3>
-      Here at Devs For Ukraine conference, we are dedicated to providing a
-      harassment-free conference experience for everyone, regardless of gender,
-      sexual orientation, disability, physical appearance, body size, race, or
-      religion (or lack thereof).
+      Here at XataConf, we are dedicated to providing a harassment-free
+      conference experience for everyone, regardless of gender, sexual
+      orientation, disability, physical appearance, body size, race, or religion
+      (or lack thereof).
       <br />
       <br />
       We do not tolerate harassment of conference participants in any form. We
@@ -63,12 +62,8 @@ const CodeOfConduct = () => (
       <br />
       <br />
       If you are subject to or witness unacceptable behavior, or have any other
-      concerns, please notify a Devs For Ukraine organizer as soon as possible
-      using{" "}
-      <a
-        className="text-devs-yellow underline"
-        href="mailto:sara.vieira@remote.com"
-      >
+      concerns, please notify a XataConf organizer as soon as possible using{" "}
+      <a className="underline text-devs-yellow" href="mailto:devrel@xata.io">
         this email
       </a>
       .

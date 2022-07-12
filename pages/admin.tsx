@@ -51,30 +51,31 @@ const Admin = ({
   return (
     <Layout noFooter>
       <div className="flex items-center justify-center gap-6">
-        <H3 className="text-center my-16">
-          Analytics:{" "}
+        <H3 className="my-16 text-center">
+          Thanks to{" "}
           <a
             className="underline text-devs-yellow"
-            href="https://analytics.iamsaravieira.com/devsforukraine.io"
+            href="https://github.com/remoteoss/devsforukraine"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Plausible
-          </a>
+            remote.com
+          </a>{" "}
+          for the code.
         </H3>
         <H3 className="text-center ">
           Attendees:{" "}
-          <span className="text-devs-yellow underline">{attendees}</span>
+          <span className="underline text-devs-yellow">{attendees}</span>
         </H3>
       </div>
-      <H2 className="text-center my-12">Q&A</H2>
+      <H2 className="my-12 text-center">Q&A</H2>
 
       {data.questions.accepted.length > 0 && (
         <>
           <H3 className="!text-devs-gray100 mb-6 text-center m-auto">
             Accepted
           </H3>
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-3 mt-6 mb-6">
+          <div className="grid gap-5 mt-6 mb-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {data.questions.accepted.map((question: Question) => (
               <Question
                 question={question}
@@ -86,7 +87,7 @@ const Admin = ({
         </>
       )}
       <H3 className="!text-devs-gray100 mb-6 text-center m-auto">To Review</H3>
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {data.questions.notViewed.map((question: Question) => (
           <Question
             question={question}
@@ -112,7 +113,7 @@ const Question = ({
       <div className="flex">
         {question?.User?.image && (
           <img
-            className="rounded-full w-6 h-6 m-auto mr-3"
+            className="w-6 h-6 m-auto mr-3 rounded-full"
             src={question?.User?.image}
             alt={question?.User?.name || "user"}
           />
@@ -127,7 +128,7 @@ const Question = ({
       <div className="flex gap-2">
         {!question.rejected && (
           <button
-            className="bg-white bg-opacity-5 rounded-full w-8 h-8 flex items-center justify-center hover:bg-opacity-20"
+            className="flex items-center justify-center w-8 h-8 bg-white rounded-full bg-opacity-5 hover:bg-opacity-20"
             onClick={() => updateQuestionState("rejected", question.id)}
           >
             <CrossIcon />
@@ -135,7 +136,7 @@ const Question = ({
         )}
         {!question.accepted && (
           <button
-            className="bg-white bg-opacity-5 rounded-full w-8 h-8 flex items-center justify-center hover:bg-opacity-20"
+            className="flex items-center justify-center w-8 h-8 bg-white rounded-full bg-opacity-5 hover:bg-opacity-20"
             onClick={() => updateQuestionState("accepted", question.id)}
           >
             <CheckMarkIcon />
