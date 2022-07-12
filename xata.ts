@@ -64,6 +64,26 @@ export interface Ticket {
 
 export type TicketRecord = Ticket & XataRecord;
 
+export interface Speaker {
+  name?: string | null;
+  talk?: string | null;
+  image?: string | null;
+  videoUrl?: string | null;
+  twitter?: string | null;
+  position?: string | null;
+}
+
+export type SpeakerRecord = Speaker & XataRecord;
+
+export interface Organizer {
+  name?: string | null;
+  title?: string | null;
+  twitter?: string | null;
+  image?: string | null;
+}
+
+export type OrganizerRecord = Organizer & XataRecord;
+
 export type DatabaseSchema = {
   nextauth_users: NextauthUser;
   nextauth_accounts: NextauthAccount;
@@ -72,6 +92,8 @@ export type DatabaseSchema = {
   nextauth_users_sessions: NextauthUsersSession;
   nextauth_sessions: NextauthSession;
   tickets: Ticket;
+  speakers: Speaker;
+  organizers: Organizer;
 };
 
 const tables = [
@@ -82,6 +104,8 @@ const tables = [
   "nextauth_users_sessions",
   "nextauth_sessions",
   "tickets",
+  "speakers",
+  "organizers",
 ];
 
 const DatabaseClient = buildClient();

@@ -8,6 +8,9 @@ const client = new XataClient();
 export default NextAuth({
   adapter: XataAdapter(client),
   callbacks: {
+    session: async ({ session, user }) => {
+      return { ...session, user: { ...session.user, ...user } }
+    },
     signIn: async ({ user }) => {
       const hasTicket = await client.db.tickets.filter({ 'user.id': user.id }).getFirst();
       if (Boolean(hasTicket)) {

@@ -3,53 +3,19 @@ import { DEFAULT_MOTION } from "../../utils/constants"
 import { TwitterSmall } from "../Icons"
 import { Label, MotionH2, MotionSubHeadlineLarge } from "../Typography"
 
-import sara from "../../public/organizers/sara.jpeg"
-
-import adrien from "../../public/organizers/adrien.jpeg"
-import marcelo from "../../public/organizers/marcelo.jpeg"
-import cassidy from "../../public/speakers/cassidy.jpeg"
-import tobi from "../../public/speakers/tobi.jpg"
-import Image from "next/image"
 import { Xatafly } from "../Xatafly"
+import { OrganizerRecord } from "../../xata"
+import { FC } from "react"
 
-const organizers = [
-  {
-    name: "Sara Vieira",
-    title: "Frontend Developer",
-    twitter: "NikkitaFTW",
-    image: sara,
-  },
-  {
-    name: "Marcelo Lebre",
-    title: "COO at Remote",
-    twitter: "marcelo_lebre",
-    image: marcelo,
-  },
-  {
-    name: "Cassidy Williams",
-    title: "Head of Developer Experience",
-    twitter: "cassidoo",
-    image: cassidy,
-  },
-  {
-    name: "Adrien Thomas",
-    title: "Staff Product Designer",
-    image: adrien,
-    twitter: "adrienths",
-  },
-  {
-    name: "Tobi Pfeiffer",
-    title: "Staff Engineer & Bunny Lover",
-    twitter: "PragTob",
-    image: tobi,
-  },
-]
+type Props = {
+  organizers: OrganizerRecord[]
+}
 
 const motionStagger = (index: number) => ({
   ...DEFAULT_MOTION({ delay: index * 0.05 }),
 })
 
-export const Organizers = () => (
+export const Organizers: FC<Props> = ({ organizers }) => (
   <div className="flex px-4 gap-4 min-h-screen flex-col pt-[160px]">
     <div className="text-center">
       <MotionH2
@@ -67,7 +33,7 @@ export const Organizers = () => (
       <span className="text-white">
         <strong>Xata Developer Relations</strong>
       </span>{" "}
-      team.
+      team and friends.
     </MotionSubHeadlineLarge>
     <ul className="flex gap-8 flex-wrap items-center justify-center mt-[120px] mb-[160px]">
       {organizers.map((organizer, i) => (
@@ -85,11 +51,14 @@ export const Organizers = () => (
           >
             <TwitterSmall />
           </a>
-          <Image
-            src={organizer.image}
+          <img
+            src={
+              organizer.image ||
+              "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+            }
             width={56}
             height={56}
-            alt={organizer.name}
+            alt={organizer.name || "Organizer Avatar"}
             className="rounded-full"
           />
           <Label className=" mt-3 font-size-[14px] mb-2">

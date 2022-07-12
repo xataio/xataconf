@@ -1,12 +1,13 @@
 import { motion } from "framer-motion"
 import { shuffle } from "lodash-es"
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import { DEFAULT_MOTION } from "../../utils/constants"
 import {
   backendSpeakers as backendSpeakersOriginal,
   frontendSpeakers as frontendSpeakersOriginal,
 } from "../../utils/speakers"
+import { SpeakerRecord } from "../../xata"
 import { SecondaryButton } from "../Buttons/Secondary"
 import { TwitterSmall } from "../Icons"
 import {
@@ -17,7 +18,9 @@ import {
   TalkName,
 } from "../Typography"
 
-// generated with https://gcal.dotenv.dev/
+type Props = {
+  speakers: SpeakerRecord[]
+}
 
 const Header = () => (
   <motion.div
@@ -31,17 +34,7 @@ const Header = () => (
   </motion.div>
 )
 
-export const Speakers = () => {
-  const [frontendSpeakers, setFrontendSpeakers] = useState(
-    frontendSpeakersOriginal
-  )
-  const [backendSpeakers, setBackendSpeakers] = useState(
-    backendSpeakersOriginal
-  )
-
-  useEffect(() => setBackendSpeakers(shuffle(backendSpeakersOriginal)), [])
-  useEffect(() => setFrontendSpeakers(shuffle(frontendSpeakersOriginal)), [])
-
+export const Speakers: FC<Props> = ({ speakers }) => {
   return (
     <div className="flex max-w-screen-lg px-4 mx-auto gap-4 min-h-screen flex-col pt-[160px]">
       <div className="text-center">
@@ -63,9 +56,9 @@ export const Speakers = () => {
       </MotionSubHeadlineLarge>
       <Header />
       <ul className="mb-28">
-        {frontendSpeakers.map((speaker, index) => (
+        {speakers.map((speaker, index) => (
           <Speaker
-            key={`${speaker.name}-${speaker.pic}`}
+            key={`${speaker.name}-${speaker.image}`}
             i={index}
             speaker={speaker}
           />
@@ -77,22 +70,20 @@ export const Speakers = () => {
 const motionStagger = (index: number) => ({
   ...DEFAULT_MOTION({ delay: index * 0.05 }),
 })
-const Speaker = ({ speaker, i }: { speaker: any; i: number }) => {
+const Speaker = ({ speaker, i }: { speaker: SpeakerRecord; i: number }) => {
   return (
     <motion.li
       {...motionStagger(i)}
       className="sm:flex flex-col sm:flex-row justify-between items-center mb-6 pb-6 border-b-[1px] border-opacity-20 border-dashed border-white"
     >
       <div className="flex items-center w-full">
-        <button
-          disabled={!speaker.turtle}
-          className="relative min-w-[64px] w-16  mr-6"
-        >
-          <Image
-            // @ts-ignore
-            ref={speaker.turtle ? ref : null}
-            src={speaker.pic}
-            alt={speaker.name}
+        <button className="relative min-w-[64px] w-16  mr-6">
+          <img
+            src={
+              speaker.image ||
+              "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+            }
+            alt={speaker.name || "Speaker's Avatar"}
             width={64}
             height={64}
             className="rounded-full"
@@ -102,14 +93,15 @@ const Speaker = ({ speaker, i }: { speaker: any; i: number }) => {
         <div>
           <div className="flex items-center gap-3">
             <span className="font-bossa">{speaker.name}</span>
-
-            <a
-              className="pt-1 text-devs-blue"
-              href={`https://twitter.com/${speaker.twitter}`}
-              aria-label={`${speaker.name} on Twitter`}
-            >
-              <TwitterSmall />
-            </a>
+            {speaker.twitter && (
+              <a
+                className="pt-1 text-devs-blue"
+                href={speaker.twitter}
+                aria-label={`${speaker.name} on Twitter`}
+              >
+                <TwitterSmall />
+              </a>
+            )}
           </div>
           <TalkName className="!text-devs-gray100 pt-1">
             {" "}
@@ -118,14 +110,16 @@ const Speaker = ({ speaker, i }: { speaker: any; i: number }) => {
         </div>
       </div>
       <div className="flex sm:max-w-[70%] mt-4 sm:mt-0 gap-4 w-full items-center">
-        <SecondaryButton
-          className="justify-center w-full md:w-fit md:ml-auto"
-          href={speaker.yt}
-          target="_blank"
-          rel="noreferrer"
-        >
-          View talk
-        </SecondaryButton>
+        {speaker.videoUrl && (
+          <SecondaryButton
+            className="justify-center w-full md:w-fit md:ml-auto"
+            href={speaker.videoUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            View talk
+          </SecondaryButton>
+        )}
       </div>
     </motion.li>
   )
