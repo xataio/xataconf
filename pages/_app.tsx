@@ -8,6 +8,7 @@ import { SEO } from "../components/SEO"
 import SignInModal from "../components/SignInModal"
 import "./styles.css"
 import ScheduleModal from "../components/ScheduleModal"
+import { GetServerSideProps } from "next"
 
 const queryClient = new QueryClient()
 export default function App({ Component, pageProps }: AppProps) {

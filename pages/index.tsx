@@ -1,10 +1,11 @@
-import { GetStaticProps } from "next"
+import { GetServerSideProps, GetStaticProps } from "next"
 import { Hero } from "../components/Home/Hero"
 import { Info } from "../components/Home/Info"
 import { Organizers } from "../components/Home/Organizers"
 import { Speakers } from "../components/Home/Speakers"
 import Layout from "../components/layout"
 import { OrganizerRecord, SpeakerRecord, XataClient } from "../xata"
+import { basicAuthCheck } from "../utils/basicAuth"
 
 type Props = {
   speakers: SpeakerRecord[]
@@ -24,7 +25,12 @@ export default function IndexPage({ speakers, organizers }: Props) {
 
 const client = new XataClient()
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+  req,
+  res,
+}) => {
+  await basicAuthCheck(req, res)
+
   /**
    * @todo reconsider when https://github.com/xataio/client-ts/issues/427 is closed
    */
@@ -33,6 +39,5 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
   return {
     props: { speakers, organizers },
-    revalidate: true,
   }
 }
