@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "dev": "next",
-    "build": "prisma generate && next build",
+    "build": "next build",
     "start": "next start",
     "types": "tsc --noEmit",
     "lint": "eslint ."
@@ -13,7 +13,6 @@
   "license": "ISC",
   "dependencies": {
     "@headlessui/react": "^1.5.0",
-    "@prisma/client": "^4.0.0",
     "@tailwindcss/forms": "^0.5.0",
     "@tejaskumar/xata-next-auth-adapter": "^0.1.2",
     "@xata.io/client": "^0.13.1",
@@ -45,7 +44,6 @@
     "@types/react-dom": "^18.0.6",
     "eslint": "8.19.0",
     "eslint-config-next": "12.2.2",
-    "prisma": "^4.0.0",
     "typescript": "^4.6.3"
   },
   "prettier": {
