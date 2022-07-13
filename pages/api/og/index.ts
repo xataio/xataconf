@@ -22,6 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.setHeader('Cache-Control', `public, immutable, no-transform, s-maxage=31536000, max-age=31536000`);
         res.end(file);
     } catch (e) {
+        // eslint-disable-next-line no-console
         console.error(e);
         res.statusCode = 500;
         res.setHeader('Content-Type', 'text/html');
