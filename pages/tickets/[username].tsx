@@ -54,7 +54,7 @@ const UserTicket = ({
   )
 
   return (
-    <Layout noFooter withBG>
+    <Layout noFooter>
       <Head>
         <title>
           {firstName}
@@ -146,7 +146,6 @@ export const getServerSideProps: GetServerSideProps = async ({
   req,
 }) => {
   const { username } = query
-  const base = getAbsoluteURL(req)
   const session = await getSession({ req })
   const ticket = await client.db.tickets
     .filter({ "user.username": String(username) })

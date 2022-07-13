@@ -5,11 +5,10 @@ import Header from "./header"
 interface Props {
   children: React.ReactNode
   noFooter?: boolean
-  withBG?: boolean
   center?: boolean
 }
 
-export default function Layout({ children, noFooter, withBG, center }: Props) {
+export default function Layout({ children, noFooter, center }: Props) {
   return (
     <>
       <Header />
