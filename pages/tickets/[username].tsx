@@ -66,7 +66,7 @@ const UserTicket: FC<Props> = ({ user, session, speakers }) => {
         <meta itemProp="image" content={imageUrl}></meta>
       </Head>
 
-      <div className="relative flex flex-col items-center h-full min-h-screen gap-8 mt-20 z-1 sm:min-h-0">
+      <div className="relative flex flex-col items-center h-full min-h-screen gap-8 p-4 z-1 sm:min-h-0">
         <div
           className={classNames(
             " max-w-full",

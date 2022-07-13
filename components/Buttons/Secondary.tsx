@@ -2,7 +2,7 @@ import classNames from "classnames"
 import Link from "next/link"
 
 const classes =
-  "bg-devs-gray200 font-bold px-6 py-3 rounded-md hover:bg-devs-gray50 gap-2 items-center transition-colors h-10"
+  "bg-devs-gray200 text-sm sm:text-base font-bold px-6 py-3 rounded-md hover:bg-devs-gray50 gap-2 items-center transition-colors h-10"
 
 type Props = {
   onClick?: () => void
