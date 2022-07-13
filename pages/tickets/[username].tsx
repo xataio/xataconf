@@ -21,6 +21,7 @@ import { DEFAULT_MOTION, name, url } from "../../utils/constants"
 import { NextauthUserRecord, XataClient } from "../../xata"
 import { Session } from "next-auth"
 import { shuffle } from "lodash-es"
+import { TicketButton } from "../../components/Buttons/TicketButton"
 
 type Props = {
   user: NextauthUserRecord
@@ -119,7 +120,7 @@ const UserTicket: FC<Props> = ({ user, session, speakers }) => {
             {...DEFAULT_MOTION({ delay: 0.2 })}
             className="flex items-center gap-3 mb-12"
           >
-            <Register />
+            {session ? <Register /> : <TicketButton />}
             <Link href="/">
               <a className="block text-devs-yellow hover:underline">
                 {" "}
