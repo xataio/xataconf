@@ -18,7 +18,7 @@ import {
 } from "../../components/Typography"
 import { motion } from "framer-motion"
 import { DEFAULT_MOTION, name, url } from "../../utils/constants"
-import { NextauthUserRecord, SpeakerRecord, XataClient } from "../../xata"
+import { NextauthUserRecord, XataClient } from "../../xata"
 import { Session } from "next-auth"
 import { shuffle } from "lodash-es"
 
@@ -59,7 +59,7 @@ const UserTicket: FC<Props> = ({ user, session, speakers }) => {
   return (
     <Layout initialSession={session} noFooter>
       <Head>
-        <title>XataConf | {firstName}'s Ticket</title>
+        <title>XataConf | {firstName}&apos;s Ticket</title>
         <meta property="og:image" content={imageUrl} />
         <meta name="twitter:image" content={imageUrl}></meta>
         <meta name="image" content={imageUrl}></meta>
