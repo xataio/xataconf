@@ -4,7 +4,6 @@ import TwitterProvider from "next-auth/providers/twitter"
 import GoogleProvider from "next-auth/providers/google"
 import XataAdapter from "@tejaskumar/xata-next-auth-adapter"
 import { NextauthUser, XataClient } from "../../../xata"
-import { snake } from "case"
 
 const client = new XataClient();
 
@@ -48,7 +47,7 @@ export default NextAuth({
           image: data.picture,
           name: data.name,
           email: data.email,
-          username: `${snake(data.email)}_go`,
+          username: `${data.sub}_go`,
           id: data.sub,
         }
 

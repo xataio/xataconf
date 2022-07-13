@@ -1,6 +1,6 @@
 export const AvatarBorder = () => (
   <svg
-    className="absolute -top-[6px] -right-[6px]"
+    className="absolute top-0 right-0 sm:-top-[6px] sm:-right-[6px]"
     width="76"
     height="76"
     viewBox="0 0 76 76"

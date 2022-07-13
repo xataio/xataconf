@@ -31,11 +31,11 @@ export const Ticket: FC<Props> = ({ user }) => {
         className="absolute transform ticket" // @ts-ignore
         ref={wrapper}
       >
-        <div className="top-8 left-8 absolute w-full sm:w-[52%]">
-          <div className="flex items-center justify-center w-full">
+        <div className="top-8 left-8 absolute sm:w-[52%]">
+          <div className="flex items-center w-full md:justify-center">
             <Logo />
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col md:items-center">
             <span className="block mb-2 text-devs-yellow">
               {Intl.DateTimeFormat("en-US", { dateStyle: "long" }).format(date)}
             </span>

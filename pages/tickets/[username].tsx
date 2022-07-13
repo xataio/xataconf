@@ -59,7 +59,7 @@ const UserTicket: FC<Props> = ({ user, session, speakers }) => {
   return (
     <Layout initialSession={session} noFooter>
       <Head>
-        <title>XataConf | {firstName}&apos;s Ticket</title>
+        <title>{`XataConf | ${firstName}'s Ticket`}</title>
         <meta property="og:image" content={imageUrl} />
         <meta name="twitter:image" content={imageUrl}></meta>
         <meta name="image" content={imageUrl}></meta>
@@ -76,7 +76,7 @@ const UserTicket: FC<Props> = ({ user, session, speakers }) => {
           <MotionH2 {...DEFAULT_MOTION()} className="text-center">
             {isTicketHolder
               ? "Congratulations, you are registered!"
-              : `${user.username} is attending ${name}!`}
+              : `${user.name ?? user.username} is attending ${name}!`}
           </MotionH2>
 
           <MotionSubHeadlineLarge
