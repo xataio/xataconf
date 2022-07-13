@@ -1,5 +1,5 @@
-import { BsGithub, BsTwitter } from "react-icons/bs"
 import { NextauthUser } from "../../xata"
+import { GitHubIcon, TwitterIcon } from "../Icons"
 import { AvatarBorder } from "./AvatarBorder"
 
 export const User = ({ user }: { user: NextauthUser }) => (
@@ -18,7 +18,7 @@ export const User = ({ user }: { user: NextauthUser }) => (
       {user.name}
     </h2>
     {user?.username && (
-      <div className="flex items-center justify-center gap-2 text-sm">
+      <div className="flex items-center justify-center gap-1 text-sm">
         {getUserSocialsByUsername(user.username)}
       </div>
     )}
@@ -36,7 +36,7 @@ const getUserSocialsByUsername = (username: string) => {
     case "tw":
       return (
         <>
-          <BsTwitter {...iconProps} />
+          <TwitterIcon {...iconProps} />
           <a href={`https://twitter.com/${actualUsername}`}>
             <h6 className="text-slate-500">{actualUsername}</h6>
           </a>
@@ -45,7 +45,7 @@ const getUserSocialsByUsername = (username: string) => {
     case "gh":
       return (
         <>
-          <BsGithub {...iconProps} />
+          <GitHubIcon {...iconProps} />
           <a href={`https://github.com/${actualUsername}`}>
             <h6 className="text-slate-500">{actualUsername}</h6>
           </a>

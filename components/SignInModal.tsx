@@ -19,8 +19,8 @@ export default function SignInModal() {
       </div>
       <div className="grid gap-4 sm:gap-2 sm:grid-cols-3">
         <Register with="github" />
-        <Register with="twitter" />
         <Register with="google" />
+        <Register with="twitter" />
       </div>
     </div>
   )

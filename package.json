@@ -31,7 +31,6 @@
     "raw-body": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.4.0",
     "react-query": "^3.34.19",
     "react-reactions": "0.1.3",
     "react-url-modal": "^0.4.0",

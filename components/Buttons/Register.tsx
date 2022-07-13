@@ -2,7 +2,7 @@ import classNames from "classnames"
 import { signIn } from "next-auth/react"
 import { FC } from "react"
 import { closeModal, openModal } from "react-url-modal"
-import { BsTwitter, BsGithub, BsGoogle } from "react-icons/bs"
+import { GitHubIcon, GoogleIcon, TwitterIcon } from "../Icons"
 
 type Props = {
   with?: "twitter" | "github" | "google"
@@ -23,7 +23,7 @@ export const Register: FC<Props> = (props) => {
           }}
           className={classNames(className, props.className)}
         >
-          <BsGithub size={20} />
+          <GitHubIcon size={20} />
           <span>GitHub</span>
         </button>
       )
@@ -37,7 +37,7 @@ export const Register: FC<Props> = (props) => {
           className={classNames(className, props.className)}
           style={{ background: "#4285F4", color: "white" }}
         >
-          <BsGoogle size={20} />
+          <GoogleIcon size={20} />
           <span>Google</span>
         </button>
       )
@@ -51,7 +51,7 @@ export const Register: FC<Props> = (props) => {
           style={{ background: "#1DA1F2", color: "white" }}
           className={classNames(className, props.className)}
         >
-          <BsTwitter size={20} />
+          <TwitterIcon color="white" />
           <span>Twitter</span>
         </button>
       )
