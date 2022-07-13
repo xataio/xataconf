@@ -20,7 +20,13 @@ export default function IndexPage({ speakers, session, organizers }: Props) {
   return (
     <Layout initialSession={session}>
       <Hero initialSession={session} />
-      <Info />
+      <Info
+        info={[
+          { top: speakers.length, bottom: "Speakers" },
+          { top: "Free", bottom: "Tickets" },
+          { top: "Online", bottom: "Location" },
+        ]}
+      />
       <Speakers speakers={speakers} />
       <Organizers organizers={organizers} />
     </Layout>
@@ -35,11 +41,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
 }) => {
   basicAuthCheck(req, res)
 
-  /**
-   * @todo reconsider when https://github.com/xataio/client-ts/issues/427 is closed
-   */
-  const speakers = Array.from(await client.db.speakers.getMany())
-  const organizers = Array.from(await client.db.organizers.getMany())
+  const speakers = await client.db.speakers.getAll()
+  const organizers = await client.db.organizers.getAll()
   const session = await getSession({ req })
 
   return {

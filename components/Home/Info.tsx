@@ -4,22 +4,14 @@ import { Label, StatsHeader } from "../Typography"
 import { motion } from "framer-motion"
 import { DEFAULT_MOTION } from "../../utils/constants"
 
-const info = [
-  {
-    top: 6,
-    bottom: "Speakers",
-  },
-  {
-    top: "Free",
-    bottom: "Tickets",
-  },
-  {
-    top: "Online",
-    bottom: "Location",
-  },
-]
+type InfoProps = {
+  info: {
+    top: string | number
+    bottom: string | number
+  }[]
+}
 
-export const Info = () => (
+export const Info = ({ info }: InfoProps) => (
   <div className="flex items-center gap-4  flex-col mt-[160px] relative ">
     <div className="sm:flex items-center pb-[160px] border-b-[1px] border-b-white border-solid border-opacity-20 relative w-full justify-center">
       {info.map((item, index) => (
