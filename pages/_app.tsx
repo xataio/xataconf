@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <URLModal
             adapter="nextjs"
             modals={{
-              signin: SignInModal,
+              ...(!pageProps.session && { signin: SignInModal }),
               schedule: ScheduleModal,
             }}
             Wrapper={ModalWrapper}

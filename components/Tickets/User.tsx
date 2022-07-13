@@ -1,6 +1,5 @@
 import { BsGithub, BsTwitter } from "react-icons/bs"
 import { NextauthUser } from "../../xata"
-import { GitHub } from "../Icons"
 import { AvatarBorder } from "./AvatarBorder"
 
 export const User = ({ user }: { user: NextauthUser }) => (
@@ -30,8 +29,6 @@ const iconProps = { size: 16, color: "#64748b" }
 const getUserSocialsByUsername = (username: string) => {
   const suffix = username.slice(-2)
   const actualUsername = username.replace(suffix, "").slice(0, -1)
-
-  console.log({ actualUsername, suffix })
 
   switch (suffix) {
     case "go":

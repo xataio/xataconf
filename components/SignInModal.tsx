@@ -12,9 +12,9 @@ export default function SignInModal() {
           Register to attend XataConf for Free
         </Dialog.Title>
         <p className="text-sm">
-          We are honored to have you be a part of our event, and we're looking
-          forward to serving you some amazing content. Sign in with one of these
-          services to complete your registration.
+          We are honored to have you be a part of our event, and we&apos;re
+          looking forward to serving you some amazing content. Sign in with one
+          of these services to complete your registration.
         </p>
       </div>
       <div className="grid gap-4 sm:gap-2 sm:grid-cols-3">
