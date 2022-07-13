@@ -64,14 +64,9 @@ export function getHtml(parsedReq: any) {
  }
 </script>
   <body>
-    <div class="relative" style="transform: scale(2.5)">
-    <h1 style="font-size:32px; font-weight: bold;">
-    ${parsedReq.username || parsedReq['amp;username']} is attending XataConf!
-  </h1>
-      <div style="margin-top: 40px">
+      <div style="transform: scale(3.1)">
       ${htmlString}
       </div>
-    </div>
   </body>
 </html>
 `
