@@ -27,7 +27,7 @@ export const Organizers: FC<Props> = ({ organizers }) => (
     </div>
     <MotionSubHeadlineLarge
       {...DEFAULT_MOTION()}
-      className="mt-5 mx-auto block text-center !text-devs-gray100 max-w-[560px]"
+      className="mt-5 mx-auto block text-center !text-devs-gray100 max-w-screen-lg"
     >
       This event was put together by the talented{" "}
       <span className="text-white">
