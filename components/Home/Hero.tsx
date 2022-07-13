@@ -1,7 +1,7 @@
 import { Session } from "next-auth"
 import { useSession } from "next-auth/react"
 import { FC } from "react"
-import { RegisterWithGitHub } from "../Buttons/RegisterGitHub"
+import { RegisterWithGitHub } from "../Buttons/Register"
 import { TicketButton } from "../Buttons/TicketButton"
 import { H1 } from "../Typography"
 

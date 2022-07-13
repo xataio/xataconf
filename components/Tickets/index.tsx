@@ -35,7 +35,7 @@ export const Ticket: FC<Props> = ({ user }) => {
           <div className="flex items-center justify-center w-full">
             <Logo />
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col items-center">
             <span className="block mb-2 text-devs-yellow">
               {Intl.DateTimeFormat("en-US", { dateStyle: "long" }).format(date)}
             </span>

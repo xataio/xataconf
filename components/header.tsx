@@ -2,10 +2,10 @@ import Link from "next/link"
 import { useSession } from "next-auth/react"
 import { Logo } from "./Logo"
 import { TicketButton } from "./Buttons/TicketButton"
-import { RegisterWithGitHub } from "./Buttons/RegisterGitHub"
 import { motion } from "framer-motion"
 import { Session } from "next-auth"
 import { FC } from "react"
+import { Register } from "./Buttons/Register"
 
 type Props = {
   initialSession: Session | null
@@ -39,11 +39,7 @@ export const Header: FC<Props> = ({ initialSession: initialSession }) => {
           </a>
         </Link>
         <div className="flex flex-wrap justify-start gap-3 mt-0">
-          {session || initialSession ? (
-            <TicketButton />
-          ) : (
-            <RegisterWithGitHub />
-          )}
+          {session || initialSession ? <TicketButton /> : <Register />}
         </div>
       </div>
     </motion.header>

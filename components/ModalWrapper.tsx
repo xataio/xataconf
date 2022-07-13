@@ -25,8 +25,8 @@ export const ModalWrapper = ({
         className="fixed z-[100] inset-0 overflow-y-auto"
         onClose={closeModal}
       >
-        <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-          <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-80 transition-opacity backdrop-blur-sm" />
+        <div className="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+          <Dialog.Overlay className="fixed inset-0 transition-opacity bg-black bg-opacity-80 backdrop-blur-sm" />
 
           <span
             className="hidden sm:inline-block sm:align-middle sm:h-screen"
@@ -57,7 +57,7 @@ export const ModalWrapper = ({
 
 const RightSVG = () => (
   <svg
-    className="absolute right-0 top-0"
+    className="absolute top-0 right-0 -z-10"
     width="48"
     height="144"
     viewBox="0 0 48 144"
@@ -73,7 +73,7 @@ const RightSVG = () => (
 
 export const LeftSVG = () => (
   <svg
-    className="absolute left-0 top-0"
+    className="absolute top-0 left-0 -z-10"
     width="54"
     height="144"
     viewBox="0 0 54 144"

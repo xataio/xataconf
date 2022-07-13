@@ -2,7 +2,7 @@ import { Session } from "next-auth"
 import { useSession } from "next-auth/react"
 
 import { TicketIcon } from "../Icons"
-import { RegisterWithGitHub } from "./RegisterGitHub"
+import { Register } from "./Register"
 import { SecondaryButton } from "./Secondary"
 
 export const TicketButton = () => {
@@ -18,6 +18,6 @@ export const TicketButton = () => {
       <span>My Ticket</span>{" "}
     </SecondaryButton>
   ) : (
-    <RegisterWithGitHub />
+    <Register />
   )
 }
