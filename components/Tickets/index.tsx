@@ -1,13 +1,17 @@
-import { useEffect, useRef } from "react"
+import { FC, useEffect, useRef } from "react"
 import { MobileTicketSVG } from "./MobileTicketBG"
 import { TicketBG } from "./TicketSVG"
 import VanillaTilt from "vanilla-tilt"
 import { date } from "../../utils/constants"
 import { Logo } from "../Logo"
-import { NextauthUserRecord } from "../../xata"
+import { NextauthUser } from "../../xata"
 import { User } from "./User"
 
-export const Ticket = (user: NextauthUserRecord) => {
+type Props = {
+  user: NextauthUser
+}
+
+export const Ticket: FC<Props> = ({ user }) => {
   const wrapper = useRef()
   useEffect(() => {
     if (wrapper.current) {

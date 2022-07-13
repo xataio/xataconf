@@ -132,7 +132,7 @@ const UserTicket = ({
           className="pb-20 sm:pb-0"
           {...DEFAULT_MOTION({ delay: 0.4 })}
         >
-          <Ticket {...user} />
+          <Ticket user={user} />
         </motion.div>
       </div>
     </Layout>

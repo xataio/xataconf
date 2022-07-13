@@ -18,7 +18,13 @@ function getCss() {
 }
 
 export function getHtml(parsedReq: any) {
-  var ticketElement = React.createElement(Ticket, parsedReq)
+  var ticketElement = React.createElement(Ticket, {
+    user: {
+      name: parsedReq['amp;name'] || parsedReq.name,
+      username: parsedReq['amp;username'] || parsedReq.username,
+      image: parsedReq['amp;image'] || parsedReq.image,
+    }
+  })
   const htmlString = ReactDOMServer.renderToStaticMarkup(ticketElement)
 
   /*html*/
@@ -40,17 +46,20 @@ export function getHtml(parsedReq: any) {
       colors: {
         devs: {
           black: "#141414",
-          yellow: "#E7CD54",
-          blue: "#2797FA",
+          yellow: "#febb00",
+          blue: "#057aff",
+          cyan: "#0ad6a1",
+          red600: "#ff0075",
+          gray500: "#1C1C1C",
           gray400: "#1B1A1A",
           gray300: "#232121",
           gray200: "#2E2D2D",
-          gray100: "#76787E",
+          gray100: "#7F7F7F",
+          gray50: "#454343",
         },
       },
       fontFamily: {
         sans: ["Inter var"],
-        bossa: "Bossa",
       },
      }
    }
@@ -58,8 +67,8 @@ export function getHtml(parsedReq: any) {
 </script>
   <body>
     <div class="relative" style="transform: scale(2.5)">
-    <h1 style="font-size:20px; font-weight: bold;font-family: Bossa">
-    ${parsedReq.username} is attending XataConf!
+    <h1 style="font-size:32px; font-weight: bold;">
+    ${parsedReq.username || parsedReq['amp;username']} is attending XataConf!
   </h1>
       <div style="margin-top: 40px">
       ${htmlString}

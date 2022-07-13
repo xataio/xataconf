@@ -1,8 +1,8 @@
-import { NextauthUserRecord } from "../../xata"
+import { NextauthUser } from "../../xata"
 import { GitHub } from "../Icons"
 import { AvatarBorder } from "./AvatarBorder"
 
-export const User = ({ user }: { user: NextauthUserRecord }) => (
+export const User = ({ user }: { user: NextauthUser }) => (
   <>
     <div className="relative h-[74px] sm:h-[64px] w-[74px] sm:w-[64px] m-auto">
       {user.image && (
