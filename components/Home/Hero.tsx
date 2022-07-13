@@ -1,7 +1,7 @@
 import { Session } from "next-auth"
 import { useSession } from "next-auth/react"
 import { FC } from "react"
-import { RegisterWithGitHub } from "../Buttons/Register"
+import { Register } from "../Buttons/Register"
 import { TicketButton } from "../Buttons/TicketButton"
 import { H1 } from "../Typography"
 
@@ -46,11 +46,7 @@ export const Hero: FC<Props> = ({ initialSession }) => {
             tools.
           </H1>
           <div className="flex flex-wrap justify-start gap-3 mt-0">
-            {session || initialSession ? (
-              <TicketButton />
-            ) : (
-              <RegisterWithGitHub />
-            )}
+            {session || initialSession ? <TicketButton /> : <Register />}
           </div>
         </div>
       </div>
