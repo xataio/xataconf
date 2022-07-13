@@ -1,6 +1,6 @@
 import confetti from "canvas-confetti"
 
-export const url = "https://xataconf.vercel.app"
+export const url = process.env.URL || "https://conf.xata.io"
 export const name = "XataConf"
 export const date = new Date("2022-09-27");
 export const HEADER_HEIGHT = 112
