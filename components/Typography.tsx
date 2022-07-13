@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 import classNames from "classnames"
-import React, { ForwardedRef } from "react"
+import React from "react"
 import { motion } from "framer-motion"
 
 type Props = {

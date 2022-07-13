@@ -1,11 +1,9 @@
 import { Ticket } from "../../../../components/Tickets"
 import ReactDOMServer from "react-dom/server"
 import React from "react"
-import { bossaFont } from "./bossa"
 
 function getCss() {
   return `
-  ${bossaFont}
     body {
         background-color: #141414;
         color: rgb(249 250 251);

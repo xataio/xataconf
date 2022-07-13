@@ -3,7 +3,6 @@ import { parse } from 'url';
 import { getScreenshot } from './_lib/chromium';
 import { getHtml } from './_lib/template';
 
-const isDev = !process.env.AWS_REGION;
 const isHtmlDebug = process.env.OG_HTML_DEBUG === '1';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -16,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return;
         }
         const fileType = 'jpeg'
-        const file = await getScreenshot(html, fileType, isDev);
+        const file = await getScreenshot(html, fileType);
 
         res.statusCode = 200;
         res.setHeader('Content-Type', `image/${fileType}`);
