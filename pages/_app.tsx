@@ -1,3 +1,5 @@
+import "nprogress/nprogress.css"
+
 import { SessionProvider } from "next-auth/react"
 import type { AppProps } from "next/app"
 import { MotionConfig } from "framer-motion"
@@ -8,11 +10,20 @@ import { SEO } from "../components/SEO"
 import SignInModal from "../components/SignInModal"
 import "./styles.css"
 import ScheduleModal from "../components/ScheduleModal"
+import dynamic from "next/dynamic"
+
+const ProgressBar = dynamic(
+  () => {
+    return import("../components/ProgressBar")
+  },
+  { ssr: false }
+)
 
 const queryClient = new QueryClient()
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
+      <ProgressBar />
       <SessionProvider session={pageProps.session} refetchInterval={0}>
         <MotionConfig reducedMotion="user">
           <SEO />
