@@ -32,15 +32,16 @@ export const Ticket: FC<Props> = ({ user }) => {
         ref={wrapper}
       >
         <div className="top-8 left-8 absolute w-full sm:w-[52%]">
-          <div className="flex items-center justify-between w-full">
+          <div className="flex items-center justify-center w-full">
             <Logo />
           </div>
-          <div className="flex flex-col mt-10">
+          <div className="flex flex-col">
             <span className="block mb-2 text-devs-yellow">
               {Intl.DateTimeFormat("en-US", { dateStyle: "long" }).format(date)}
             </span>
-            <span className="text-lg">
-              Online Celebration of Serverless, Databases, and Developer Tools
+            <span className="mt-4 text-lg font-bold">
+              Free Online Event Celebrating Serverless, Databases, and Developer
+              Tools
             </span>
           </div>
         </div>
