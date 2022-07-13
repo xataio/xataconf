@@ -4,7 +4,7 @@ import { getSession } from "next-auth/react"
 import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { useState } from "react"
+import { FC, useState } from "react"
 
 import { RegisterWithGitHub } from "../../components/Buttons/RegisterGitHub"
 import { SecondaryButton } from "../../components/Buttons/Secondary"
@@ -16,19 +16,19 @@ import {
   MotionH2,
   MotionSubHeadlineLarge,
 } from "../../components/Typography"
-import { getAbsoluteURL } from "../../utils/absoluteUrl"
 import { motion } from "framer-motion"
 import { DEFAULT_MOTION, name, url } from "../../utils/constants"
-import { NextauthUserRecord, XataClient } from "../../xata"
+import { NextauthUserRecord, SpeakerRecord, XataClient } from "../../xata"
 import { Session } from "next-auth"
+import { shuffle } from "lodash-es"
 
-const UserTicket = ({
-  user,
-  session,
-}: {
+type Props = {
   user: NextauthUserRecord
-  session: Session
-}) => {
+  session: Session | null
+  speakers: string[]
+}
+
+const UserTicket: FC<Props> = ({ user, session, speakers }) => {
   const [copied, setCopied] = useState(false)
   const router = useRouter()
   const isTicketHolder =
@@ -49,17 +49,17 @@ const UserTicket = ({
     }, 2000)
   }
 
-  const tweetCopy = encodeURIComponent(
-    `I'm attending XataConf to join the celebration of databases, serverless, and developer tools! Get your ticket at ${url}!`
-  )
+  const tweetCopy =
+    encodeURIComponent(`I'm attending #XataConf and here's my ticket! Join me in celebrating serverless, databases, and developer tools with ${speakers.join(
+      ", "
+    )} and more.
+
+`)
 
   return (
-    <Layout noFooter>
+    <Layout initialSession={session} noFooter>
       <Head>
-        <title>
-          {firstName}
-          {"'"}s ticket
-        </title>
+        <title>XataConf | {firstName}'s Ticket</title>
         <meta property="og:image" content={imageUrl} />
         <meta name="twitter:image" content={imageUrl}></meta>
         <meta name="image" content={imageUrl}></meta>
@@ -141,7 +141,7 @@ const UserTicket = ({
 
 const client = new XataClient()
 
-export const getServerSideProps: GetServerSideProps = async ({
+export const getServerSideProps: GetServerSideProps<Props> = async ({
   query,
   req,
 }) => {
@@ -151,6 +151,8 @@ export const getServerSideProps: GetServerSideProps = async ({
     .filter({ "user.username": String(username) })
     .select(["user.*"])
     .getFirst()
+  const speakers = Array.from(await client.db.speakers.getMany())
+
   const user = ticket?.user
 
   if (!user) {
@@ -158,7 +160,14 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   return {
-    props: { user, session },
+    props: {
+      user,
+      session,
+      speakers: shuffle(speakers)
+        .filter((s) => s.twitter)
+        .slice(0, 3)
+        .map((s) => `@${s.twitter?.split("/").slice(-1)[0]}`),
+    },
   }
 }
 

@@ -1,9 +1,15 @@
+import { Session } from "next-auth"
 import { useSession } from "next-auth/react"
+import { FC } from "react"
 import { RegisterWithGitHub } from "../Buttons/RegisterGitHub"
 import { TicketButton } from "../Buttons/TicketButton"
 import { H1 } from "../Typography"
 
-export const Hero = () => {
+type Props = {
+  initialSession: Session | null
+}
+
+export const Hero: FC<Props> = ({ initialSession }) => {
   const session = useSession()
 
   return (
@@ -40,7 +46,7 @@ export const Hero = () => {
             tools.
           </H1>
           <div className="flex flex-wrap justify-start gap-3 mt-0">
-            {session.status === "authenticated" ? (
+            {session || initialSession ? (
               <TicketButton />
             ) : (
               <RegisterWithGitHub />

@@ -4,6 +4,12 @@ import { Logo } from "./Logo"
 import { TicketButton } from "./Buttons/TicketButton"
 import { RegisterWithGitHub } from "./Buttons/RegisterGitHub"
 import { motion } from "framer-motion"
+import { Session } from "next-auth"
+import { FC } from "react"
+
+type Props = {
+  initialSession: Session | null
+}
 
 const MOTION = {
   initial: { opacity: 0 },
@@ -11,7 +17,8 @@ const MOTION = {
   viewport: { once: true },
   transition: { delay: 0.1, duration: 0.8 },
 }
-export default function Header() {
+
+export const Header: FC<Props> = ({ initialSession: initialSession }) => {
   const session = useSession()
 
   return (
@@ -32,7 +39,7 @@ export default function Header() {
           </a>
         </Link>
         <div className="flex flex-wrap justify-start gap-3 mt-0">
-          {session.status === "authenticated" ? (
+          {session || initialSession ? (
             <TicketButton />
           ) : (
             <RegisterWithGitHub />
