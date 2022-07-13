@@ -14,7 +14,7 @@ export const H1 = React.forwardRef(
       /* @ts-ignore */
       ref={ref}
       className={classNames(
-        "font-bold text-2xl sm:text-4xl md:text-6xl lg:text-7xl text-white md:tracking-tight",
+        "font-bold text-2xl sm:text-4xl md:text-6xl lg:text-7xl text-white tracking-tight",
         className
       )}
     >
